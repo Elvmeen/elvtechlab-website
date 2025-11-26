@@ -32,3 +32,11 @@ outputType = "webview"
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[userenv]
+
+[userenv.development]
+EMAIL_SERVICE = "gmail"
+EMAIL_FROM = "i.elameenu@gmail.com"
+EMAIL_PASSWORD = "xtod lbxl wbxc vxdz"
+ADMIN_EMAIL = "i.elameenu@gmail.com"
