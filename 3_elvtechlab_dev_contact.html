@@ -449,5 +449,28 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/scriptflowstudio.dev\/wp-
 	});
 	}
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.querySelector(".elementor-form");
+  if (!form) return;
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+    try {
+      const formData = new FormData(form);
+      const response = await fetch("/submit-message", {method: "POST", body: formData});
+      const data = await response.json();
+      if (data.success) {
+        alert("Thank you for your message! We will get back to you soon.");
+        form.reset();
+      } else {
+        alert("Error: " + (data.error || "Failed to send message"));
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("An error occurred. Please try again.");
+    }
+  });
+});
+</script>
 </body>
 </html>
