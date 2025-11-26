@@ -450,25 +450,51 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/scriptflowstudio.dev\/wp-
         }
 </script>
 <script>
-document.querySelectorAll(".elementor-form").forEach(form => {
-  form.addEventListener("submit", async function(e) {
+(function() {
+  function handleFormSubmit(e) {
     e.preventDefault();
-    const formData = new FormData(this);
-    try {
-      const response = await fetch("/submit-message", {method: "POST", body: formData});
-      const data = await response.json();
-      if (data.success) {
-        alert("Thank you for your message! We will get back to you soon.");
-        this.reset();
-      } else {
-        alert("Error: " + (data.error || "Failed to send message"));
-      }
-    } catch (error) {
-      console.error("Form error:", error);
-      alert("An error occurred. Please try again.");
+    e.stopPropagation();
+    
+    const form = this;
+    const name = form.querySelector('[name="form_fields[name]"]')?.value?.trim() || '';
+    const email = form.querySelector('[name="form_fields[email]"]')?.value?.trim() || '';
+    const phone = form.querySelector('[name="form_fields[field_6046966]"]')?.value?.trim() || '';
+    const message = form.querySelector('[name="form_fields[message]"]')?.value?.trim() || '';
+    
+    if (!name || !email || !message) {
+      alert("Please fill in Name, Email, and Message fields.");
+      return;
     }
-  });
-});
+    
+    const fd = new FormData();
+    fd.append('form_fields[name]', name);
+    fd.append('form_fields[email]', email);
+    fd.append('form_fields[field_6046966]', phone);
+    fd.append('form_fields[message]', message);
+    
+    fetch('/submit-message', { method: 'POST', body: fd })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("Thank you! We'll get back to you soon.");
+          form.reset();
+        } else {
+          alert("Error: " + (data.error || "Failed to send"));
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Connection error. Please try again.");
+      });
+  }
+  
+  // Attach handler immediately and use capture phase
+  document.addEventListener('submit', function(e) {
+    if (e.target.classList.contains('elementor-form')) {
+      handleFormSubmit.call(e.target, e);
+    }
+  }, true);
+})();
 </script>
 </body>
 </html>
