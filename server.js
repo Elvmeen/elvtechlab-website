@@ -1,60 +1,44 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const { google } = require('googleapis');
+const nodemailer = require('nodemailer');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const MESSAGES_FILE = 'messages.json';
-const ADMIN_EMAIL = 'i.elameenu@gmail.com';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'i.elameenu@gmail.com';
 
 // Parse form data with bracket notation support
 app.use(express.urlencoded({ extended: true, parameterLimit: 100, limit: '50mb' }));
 app.use(express.json());
 app.use(express.static('.'));
 
-async function getGmailClient() {
-  try {
-    const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
-    const xReplitToken = process.env.REPL_IDENTITY 
-      ? 'repl ' + process.env.REPL_IDENTITY 
-      : process.env.WEB_REPL_RENEWAL 
-      ? 'depl ' + process.env.WEB_REPL_RENEWAL 
-      : null;
-
-    if (!xReplitToken) return null;
-
-    const response = await fetch(
-      'https://' + hostname + '/api/v2/connection?include_secrets=true&connector_names=google-mail',
-      { headers: { 'Accept': 'application/json', 'X_REPLIT_TOKEN': xReplitToken } }
-    );
-    
-    const data = await response.json();
-    const connectionSettings = data.items?.[0];
-    const accessToken = connectionSettings?.settings?.access_token || connectionSettings?.settings?.oauth?.credentials?.access_token;
-    if (!accessToken) return null;
-
-    const oauth2Client = new google.auth.OAuth2();
-    oauth2Client.setCredentials({ access_token: accessToken });
-    return google.gmail({ version: 'v1', auth: oauth2Client });
-  } catch (err) {
-    return null;
-  }
-}
-
 async function sendEmail(name, email, message, phone) {
   try {
-    const gmailClient = await getGmailClient();
-    if (!gmailClient) return;
+    // Check if email credentials are configured
+    if (!process.env.EMAIL_SERVICE || !process.env.EMAIL_FROM || !process.env.EMAIL_PASSWORD) {
+      console.log('⚠️ Email not configured. Skipping email send.');
+      return;
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: process.env.EMAIL_SERVICE,
+      auth: {
+        user: process.env.EMAIL_FROM,
+        pass: process.env.EMAIL_PASSWORD
+      }
+    });
 
     const emailContent = `New message from Elv Tech Lab:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}\n\nSent: ${new Date().toISOString()}`;
-    const base64Message = Buffer.from(`Subject: New Contact: ${name}\nTo: ${ADMIN_EMAIL}\n\n${emailContent}`).toString('base64');
 
-    await gmailClient.users.messages.send({
-      userId: 'me',
-      requestBody: { raw: base64Message }
+    await transporter.sendMail({
+      from: process.env.EMAIL_FROM,
+      to: ADMIN_EMAIL,
+      subject: `New Contact Form Submission: ${name}`,
+      text: emailContent,
+      replyTo: email
     });
-    console.log(`📧 Email sent`);
+    console.log(`📧 Email sent to ${ADMIN_EMAIL}`);
   } catch (err) {
     console.error('Email failed:', err.message);
   }
