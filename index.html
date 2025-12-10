@@ -130,6 +130,38 @@ gtag("config", "GT-WFFD8F9X");
 <link rel="icon" href="/elv-logo.png" sizes="192x192" />
 <link rel="apple-touch-icon" href="/elv-logo.png" />
 <meta name="msapplication-TileImage" content="/elv-logo.png" />
+<!-- ADD THE CSS HERE -->
+<style>
+/* ONLY target the desktop header inner container - nothing else */
+div#header-bar.elementor-element-eebf55 > div.elementor-element-5c12e017.header-internal {
+    background-color: rgba(0, 0, 0, 0.6) !important; /* DARKER - changed from white to dark */
+    backdrop-filter: blur(10px) !important;
+    border-radius: 50px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    width: 85% !important;
+    max-width: 1100px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Make the outer header container sticky */
+div.elementor-element.elementor-element-eebf55#header-bar {
+    background-color: transparent !important;
+    padding-top: 20px !important;
+    position: sticky !important; /* CHANGED from relative to sticky */
+    top: 0 !important; /* Stays at top when scrolling */
+    z-index: 9999 !important; /* Stays above other content */
+}
+
+/* Make logo smaller */
+div.elementor-element-5c12e017 .elementor-widget-image img {
+    width: 55px !important;
+    height: 55px !important;
+	margin-left: 20px !important;  /* Shifts logo to the right */
+}
+</style>
 </head>
 <body class="home wp-singular page-template page-template-elementor_header_footer page page-id-124 wp-custom-logo wp-embed-responsive wp-theme-hello-elementor hello-elementor-default elementor-default elementor-template-full-width elementor-kit-7 elementor-page elementor-page-124">
 <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
@@ -374,56 +406,106 @@ gtag("config", "GT-WFFD8F9X");
 				</div>
 				<div class="elementor-element elementor-element-33a6527 elementor-widget elementor-widget-html" data-id="33a6527" data-element_type="widget" data-widget_type="html.default">
 				<div class="elementor-widget-container">
-					<style>
-    .btn-group {
-        position: relative;
-      display: inline-flex;
-      height: 2rem;
-      width: 2rem;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50px;
-      background-color: #849da4;
-      cursor: pointer;
-    }
-    .icon-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      transform: rotate(-45deg);
-      transition: transform 300ms ease;
-    }
-    .btn-group:hover {
-        background-color: #849da4;
-    }
-    .btn-group:hover .icon-wrapper {
-      transform: rotate(0deg);
-    }
-    .icon-svg {
-      height: 1.25rem;
-      width: 1.25rem;
-      color: #e5e5e5;
-    }
-  </style>
-<a href="https://monperedaycare.co.uk" target="_blank" class="btn-group" rel="noopener">
-    <div class="icon-wrapper">
-      <svg
-        width="15"
-        height="15"
-        viewBox="0 0 15 15"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        class="icon-svg"
-      >
-        <path
-          d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-          fill="currentColor"
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-        />
-      </svg>
-    </div>
-  </a>
+					<style>
+
+    .btn-group {
+
+        position: relative;
+
+      display: inline-flex;
+
+      height: 2rem;
+
+      width: 2rem;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 50px;
+
+      background-color: #849da4;
+
+      cursor: pointer;
+
+    }
+
+    .icon-wrapper {
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+      transform: rotate(-45deg);
+
+      transition: transform 300ms ease;
+
+    }
+
+    .btn-group:hover {
+
+        background-color: #849da4;
+
+    }
+
+    .btn-group:hover .icon-wrapper {
+
+      transform: rotate(0deg);
+
+    }
+
+    .icon-svg {
+
+      height: 1.25rem;
+
+      width: 1.25rem;
+
+      color: #e5e5e5;
+
+    }
+
+  </style>
+
+<a href="https://monperedaycare.co.uk" target="_blank" class="btn-group" rel="noopener">
+
+    <div class="icon-wrapper">
+
+      <svg
+
+        width="15"
+
+        height="15"
+
+        viewBox="0 0 15 15"
+
+        fill="none"
+
+        xmlns="http://www.w3.org/2000/svg"
+
+        class="icon-svg"
+
+      >
+
+        <path
+
+          d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+
+          fill="currentColor"
+
+          fill-rule="evenodd"
+
+          clip-rule="evenodd"
+
+        />
+
+      </svg>
+
+    </div>
+
+  </a>
+
 				</div>
 				</div>
 				</div>
@@ -440,56 +522,106 @@ gtag("config", "GT-WFFD8F9X");
 				</div>
 				<div class="elementor-element elementor-element-68dcdc6 elementor-widget elementor-widget-html" data-id="68dcdc6" data-element_type="widget" data-widget_type="html.default">
 				<div class="elementor-widget-container">
-					<style>
-    .btn-group {
-        position: relative;
-      display: inline-flex;
-      height: 2rem;
-      width: 2rem;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50px;
-      background-color: #849da4;
-      cursor: pointer;
-    }
-    .icon-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      transform: rotate(-45deg);
-      transition: transform 300ms ease;
-    }
-    .btn-group:hover {
-        background-color: #849da4;
-    }
-    .btn-group:hover .icon-wrapper {
-      transform: rotate(0deg);
-    }
-    .icon-svg {
-      height: 1.25rem;
-      width: 1.25rem;
-      color: #e5e5e5;
-    }
-  </style>
-<a href="https://monperestores.com" target="_blank" class="btn-group" rel="noopener">
-    <div class="icon-wrapper">
-      <svg
-        width="15"
-        height="15"
-        viewBox="0 0 15 15"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        class="icon-svg"
-      >
-        <path
-          d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-          fill="currentColor"
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-        />
-      </svg>
-    </div>
-  </a>
+					<style>
+
+    .btn-group {
+
+        position: relative;
+
+      display: inline-flex;
+
+      height: 2rem;
+
+      width: 2rem;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 50px;
+
+      background-color: #849da4;
+
+      cursor: pointer;
+
+    }
+
+    .icon-wrapper {
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+      transform: rotate(-45deg);
+
+      transition: transform 300ms ease;
+
+    }
+
+    .btn-group:hover {
+
+        background-color: #849da4;
+
+    }
+
+    .btn-group:hover .icon-wrapper {
+
+      transform: rotate(0deg);
+
+    }
+
+    .icon-svg {
+
+      height: 1.25rem;
+
+      width: 1.25rem;
+
+      color: #e5e5e5;
+
+    }
+
+  </style>
+
+<a href="https://monperestores.com" target="_blank" class="btn-group" rel="noopener">
+
+    <div class="icon-wrapper">
+
+      <svg
+
+        width="15"
+
+        height="15"
+
+        viewBox="0 0 15 15"
+
+        fill="none"
+
+        xmlns="http://www.w3.org/2000/svg"
+
+        class="icon-svg"
+
+      >
+
+        <path
+
+          d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+
+          fill="currentColor"
+
+          fill-rule="evenodd"
+
+          clip-rule="evenodd"
+
+        />
+
+      </svg>
+
+    </div>
+
+  </a>
+
 				</div>
 				</div>
 				</div>
@@ -700,75 +832,144 @@ As a beauty supply store with hundreds of products, we needed a website that cou
 				</div>
 				<div class="elementor-element elementor-element-34d4caf elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-html" data-id="34d4caf" data-element_type="widget" data-widget_type="html.default">
 				<div class="elementor-widget-container">
-					<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<style>
-.calendly-inline-widget { overflow-y: hidden !important; }
-</style>
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-<script>
- document.addEventListener("DOMContentLoaded", (event) => {
-    gsap.registerPlugin(ScrollTrigger,SplitText)
-    let herotl = gsap.timeline();
-    let heroSplit = SplitText.create(".split h1", { type: "words, chars, lines" });
-    if (window.innerWidth > 1024 ) {
-        herotl.from(heroSplit.words, {
-        yPercent: 100,
-        autoAlpha: 0,
-        stagger: 0.35,
-        ease: "back.out(2)"
-        })
-        herotl.fromTo(".hero-btn",
-        { yPercent: 50, autoAlpha: 0}, 
-        { yPercent: 0, autoAlpha: 1}
-        );
-    } else {
-        herotl.from(heroSplit.chars, {
-        yPercent: 70,     
-        autoAlpha: 0,
-        stagger: 0.04,
-        ease: "back.out"
-        })
-        herotl.fromTo(".hero-btn",
-        { yPercent: 50, autoAlpha: 0}, 
-        { yPercent: 0, autoAlpha: 1, duration: 0.3}
-        );
-    }
-    let startPoint;
-    let endPoint;
-    if (window.innerWidth > 576) {
-        startPoint = "top 80%";
-        endPoint = "+=50%";
-        const split = new SplitType(".cool-split p", {
-        types: "words, chars",
-        });
-        const tl = gsap
-        .timeline({
-            scrollTrigger: {
-            trigger: ".cool-split p",
-            start: startPoint,
-            end: endPoint,
-            scrub: 0.8
-            },
-        })
-        .set(
-            split.chars,
-            {
-            duration: 0.3,
-            color: "#F8F8F8",
-            stagger: 0.3,
-            },
-            0.1
-        )
-    }
-    let heroCTA = document.getElementById("hero-cta");
-    heroCTA.addEventListener("click", function () {
-            Calendly.initPopupWidget({url: 'https://calendly.com/elameenu/15-min-meeting'});return false;
-    })
- });
+					<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
+<style>
+
+.calendly-inline-widget { overflow-y: hidden !important; }
+
+</style>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+<script>
+
+ document.addEventListener("DOMContentLoaded", (event) => {
+
+    gsap.registerPlugin(ScrollTrigger,SplitText)
+
+    let herotl = gsap.timeline();
+
+    let heroSplit = SplitText.create(".split h1", { type: "words, chars, lines" });
+
+    if (window.innerWidth > 1024 ) {
+
+        herotl.from(heroSplit.words, {
+
+        yPercent: 100,
+
+        autoAlpha: 0,
+
+        stagger: 0.35,
+
+        ease: "back.out(2)"
+
+        })
+
+        herotl.fromTo(".hero-btn",
+
+        { yPercent: 50, autoAlpha: 0}, 
+
+        { yPercent: 0, autoAlpha: 1}
+
+        );
+
+    } else {
+
+        herotl.from(heroSplit.chars, {
+
+        yPercent: 70,     
+
+        autoAlpha: 0,
+
+        stagger: 0.04,
+
+        ease: "back.out"
+
+        })
+
+        herotl.fromTo(".hero-btn",
+
+        { yPercent: 50, autoAlpha: 0}, 
+
+        { yPercent: 0, autoAlpha: 1, duration: 0.3}
+
+        );
+
+    }
+
+    let startPoint;
+
+    let endPoint;
+
+    if (window.innerWidth > 576) {
+
+        startPoint = "top 80%";
+
+        endPoint = "+=50%";
+
+        const split = new SplitType(".cool-split p", {
+
+        types: "words, chars",
+
+        });
+
+        const tl = gsap
+
+        .timeline({
+
+            scrollTrigger: {
+
+            trigger: ".cool-split p",
+
+            start: startPoint,
+
+            end: endPoint,
+
+            scrub: 0.8
+
+            },
+
+        })
+
+        .set(
+
+            split.chars,
+
+            {
+
+            duration: 0.3,
+
+            color: "#F8F8F8",
+
+            stagger: 0.3,
+
+            },
+
+            0.1
+
+        )
+
+    }
+
+    let heroCTA = document.getElementById("hero-cta");
+
+    heroCTA.addEventListener("click", function () {
+
+            Calendly.initPopupWidget({url: 'https://calendly.com/elameenu/15-min-meeting'});return false;
+
+    })
+
+ });
+
 </script>				</div>
 				</div>
 				</div>
@@ -787,66 +988,126 @@ As a beauty supply store with hundreds of products, we needed a website that cou
 				</div>
 				<div class="elementor-element elementor-element-a756b44 elementor-widget elementor-widget-html" data-id="a756b44" data-element_type="widget" data-widget_type="html.default">
 				<div class="elementor-widget-container">
-					<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<style>
-    .hover-button {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border-radius: 5px;
-      background-color: #101720;
-      font-family: 'Manrope', sans-serif;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #f8f8f8;
-      cursor: pointer;
-      border: none;
-    }
-    .hover-button .icon-container {
-      width: 0;
-      transform: translateX(100%);
-      padding-left: 0;
-      opacity: 0;
-      transition: all 200ms ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hover-button:hover .icon-container {
-      width: 1.25rem;
-      transform: translateX(0);
-      padding-left: 0.25rem;
-      opacity: 1;
-    }
-    .hover-button:hover {
-        background-color: #101720
-    }
-    .hover-button svg {
-      width: 2rem;
-      height: 2rem;
-      fill: currentColor;
-    }
-    @media screen and (max-width: 1024px) {
-        .hover-button {
-            font-size: 1rem;
-            padding: 8px 16px !important;
-        }
-    }
-  </style>
-<button class="hover-button" onclick="window.location.href='3_elvtechlab_dev_contact.html'">
-    <span>Let's Talk</span>
-    <div class="icon-container">
-      <svg width="20" height="20" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-        />
-      </svg>
-    </div>
+					<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+<style>
+
+    .hover-button {
+
+      position: relative;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      overflow: hidden;
+
+      border-radius: 5px;
+
+      background-color: #101720;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-weight: 600;
+
+      font-size: 1.1rem;
+
+      color: #f8f8f8;
+
+      cursor: pointer;
+
+      border: none;
+
+    }
+
+    .hover-button .icon-container {
+
+      width: 0;
+
+      transform: translateX(100%);
+
+      padding-left: 0;
+
+      opacity: 0;
+
+      transition: all 200ms ease;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+    }
+
+    .hover-button:hover .icon-container {
+
+      width: 1.25rem;
+
+      transform: translateX(0);
+
+      padding-left: 0.25rem;
+
+      opacity: 1;
+
+    }
+
+    .hover-button:hover {
+
+        background-color: #101720
+
+    }
+
+    .hover-button svg {
+
+      width: 2rem;
+
+      height: 2rem;
+
+      fill: currentColor;
+
+    }
+
+    @media screen and (max-width: 1024px) {
+
+        .hover-button {
+
+            font-size: 1rem;
+
+            padding: 8px 16px !important;
+
+        }
+
+    }
+
+  </style>
+
+<button class="hover-button" onclick="window.location.href='3_elvtechlab_dev_contact.html'">
+
+    <span>Let's Talk</span>
+
+    <div class="icon-container">
+
+      <svg width="20" height="20" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+
+        <path
+
+          d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+
+          fill-rule="evenodd"
+
+          clip-rule="evenodd"
+
+        />
+
+      </svg>
+
+    </div>
+
   </button>				</div>
 				</div>
 				</div>
@@ -946,16 +1207,26 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/scriptflowstudio.dev\/wp-
 </script>
 <script src="https://scriptflowstudio.dev/wp-content/plugins/pro-elements/assets/js/frontend.min.js?ver=3.32.1" id="elementor-pro-frontend-js"></script>
 <script src="https://scriptflowstudio.dev/wp-content/plugins/pro-elements/assets/js/elements-handlers.min.js?ver=3.32.1" id="pro-elements-handlers-js"></script>
-<link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
-<script src="https://cdn.jsdelivr.net/npm/kursor@0.0.14/dist/kursor.js"></script>
-<script>
-	if (window.innerWidth > 1024) {
-		new kursor({
-			type: 3,
-			color: '#37AED2',
-			removeDefaultCursor: false	
-	});
-	}
+<link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
+
+<script src="https://cdn.jsdelivr.net/npm/kursor@0.0.14/dist/kursor.js"></script>
+
+<script>
+
+	if (window.innerWidth > 1024) {
+
+		new kursor({
+
+			type: 3,
+
+			color: '#37AED2',
+
+			removeDefaultCursor: false	
+
+	});
+
+	}
+
 </script>
 <!-- Calendly badge widget begin -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -964,3 +1235,4 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/scriptflowstudio.dev\/wp-
 <!-- Calendly badge widget end -->
 </body>
 </html>
+
