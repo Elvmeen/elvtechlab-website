@@ -119,6 +119,38 @@ gtag("config", "GT-WFFD8F9X");
 <link rel="icon" href="/elv-logo.png" sizes="192x192" />
 <link rel="apple-touch-icon" href="/elv-logo.png" />
 <meta name="msapplication-TileImage" content="/elv-logo.png" />
+<!-- ADD THE CSS HERE -->
+<style>
+/* ONLY target the desktop header inner container - nothing else */
+div#header-bar.elementor-element-eebf55 > div.elementor-element-5c12e017.header-internal {
+    background-color: rgba(0, 0, 0, 0.6) !important; /* DARKER - changed from white to dark */
+    backdrop-filter: blur(10px) !important;
+    border-radius: 50px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    width: 85% !important;
+    max-width: 1100px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Make the outer header container sticky */
+div.elementor-element.elementor-element-eebf55#header-bar {
+    background-color: transparent !important;
+    padding-top: 20px !important;
+    position: sticky !important; /* CHANGED from relative to sticky */
+    top: 0 !important; /* Stays at top when scrolling */
+    z-index: 9999 !important; /* Stays above other content */
+}
+
+/* Make logo smaller */
+div.elementor-element-5c12e017 .elementor-widget-image img {
+    width: 55px !important;
+    height: 55px !important;
+	margin-left: 20px !important;  /* Shifts logo to the right */
+}
+</style>
 </head>
 <body class="wp-singular page-template-default page page-id-2265 wp-custom-logo wp-embed-responsive wp-theme-hello-elementor hello-elementor-default elementor-default elementor-kit-7 elementor-page elementor-page-2265">
 <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
@@ -703,16 +735,27 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/scriptflowstudio.dev\/wp-
 </script>
 <script src="https://scriptflowstudio.dev/wp-content/plugins/pro-elements/assets/js/frontend.min.js?ver=3.32.1" id="elementor-pro-frontend-js"></script>
 <script src="https://scriptflowstudio.dev/wp-content/plugins/pro-elements/assets/js/elements-handlers.min.js?ver=3.32.1" id="pro-elements-handlers-js"></script>
-<link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
-<script src="https://cdn.jsdelivr.net/npm/kursor@0.0.14/dist/kursor.js"></script>
-<script>
-	if (window.innerWidth > 1024) {
-		new kursor({
-			type: 3,
-			color: '#37AED2',
-			removeDefaultCursor: false	
-	});
-	}
+<link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
+
+<script src="https://cdn.jsdelivr.net/npm/kursor@0.0.14/dist/kursor.js"></script>
+
+<script>
+
+	if (window.innerWidth > 1024) {
+
+		new kursor({
+
+			type: 3,
+
+			color: '#37AED2',
+
+			removeDefaultCursor: false	
+
+	});
+
+	}
+
 </script>
 </body>
 </html>
+
