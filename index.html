@@ -3,6 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    /* Force entire site to behave like desktop width */
+    @media (max-width: 1024px) {
+        html, body {
+            min-width: 1200px !important;
+            overflow-x: scroll !important;
+        }
+    }
+</style>
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 		<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
 <title>Web Strategy &amp; Development Studio Based in Lagos</title>
@@ -130,14 +139,12 @@ gtag("config", "GT-WFFD8F9X");
 <link rel="icon" href="/elv-logo.png" sizes="192x192" />
 <link rel="apple-touch-icon" href="/elv-logo.png" />
 <meta name="msapplication-TileImage" content="/elv-logo.png" />
-<meta name="viewport" content="width=1200">
 
 <!-- ADD THE CSS HERE -->
 <style>
 /* ONLY target the desktop header inner container - nothing else */
 div#header-bar.elementor-element-72d1620 > div.elementor-element-d05169f.header-internal {
-    background-color: rgba(255, 255, 255, 0.15) !important;  /* Light white */
-	background-color: rgba(255, 255, 255, 0.2) !important;   /* Slightly more visible white */
+    background-color: rgba(255, 255, 255, 0.2) !important;
     backdrop-filter: blur(10px) !important;
     border-radius: 50px !important;
     padding-top: 10px !important;
@@ -149,33 +156,40 @@ div#header-bar.elementor-element-72d1620 > div.elementor-element-d05169f.header-
     margin-right: auto !important;
 }
 
-/* Make the outer header container sticky */
+/* Sticky outer header container */
 div.elementor-element.elementor-element-72d1620#header-bar {
     background-color: transparent !important;
     padding-top: 20px !important;
-    position: sticky !important; /* CHANGED from relative to sticky */
-    top: 0 !important; /* Stays at top when scrolling */
-    z-index: 9999 !important; /* Stays above other content */
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999 !important;
 }
 
 /* Make logo smaller */
 div.elementor-element-d05169f .elementor-widget-image img {
     width: 55px !important;
     height: 55px !important;
-	margin-left: 20px !important;  /* Shifts logo to the right */
+	margin-left: 20px !important;
 }
-    <style>
-        @media (max-width: 768px) {
-            /* Fix top gap when forcing desktop mode */
-            .hero {
-                padding-top: 50px !important;
-            }
 
-            /* Move navbar downward */
-            #header-bar {
-                padding-top: 35px !important;
-            }
-        }
+/* Force desktop layout on mobile */
+@media (max-width: 1024px) {
+    html, body {
+        min-width: 1200px !important;
+        overflow-x: scroll !important;
+    }
+}
+
+/* Mobile-specific spacing fixes */
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 50px !important;
+    }
+
+    #header-bar {
+        padding-top: 35px !important;
+    }
+}
 </style>
 </head>
 <body class="home wp-singular page-template page-template-elementor_header_footer page page-id-124 wp-custom-logo wp-embed-responsive wp-theme-hello-elementor hello-elementor-default elementor-default elementor-template-full-width elementor-kit-7 elementor-page elementor-page-124">
