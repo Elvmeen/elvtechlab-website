@@ -18,302 +18,51 @@
   <meta name="twitter:image" content="https://elvlab.info/elv-logo.png">
   <style>
     :root{
-      --ink:#101720;
-      --ink-2:#18232e;
-      --paper:#f6f7f8;
-      --white:#fff;
-      --muted:#69737d;
-      --line:#dfe4e8;
-      --blue:#37aed2;
-      --blue-soft:#e8f7fb;
-      --max:1180px;
-      --radius:22px;
-      --shadow:0 18px 60px rgba(16,23,32,.09);
+      --ink:#101720;--ink-2:#18232e;--paper:#f6f7f8;--white:#fff;--muted:#69737d;--line:#dfe4e8;--blue:#37aed2;--blue-soft:#e8f7fb;--max:1180px;--radius:22px;--shadow:0 18px 60px rgba(16,23,32,.09)
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
-    .nav{position:sticky;top:0;z-index:50;background:rgba(246,247,248,.9);backdrop-filter:blur(18px);border-bottom:1px solid rgba(223,228,232,.75)}
-    .nav-inner{height:78px;display:flex;align-items:center;justify-content:space-between;gap:30px}
-    .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.03em}
-    .brand img{width:38px;height:38px;object-fit:contain;border-radius:50%}
-    .brand span{font-size:16px}
-    .nav-links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:650;color:#3f4851}
-    .nav-links a:hover{color:var(--blue)}
-    .nav-cta{padding:11px 17px;border-radius:999px;background:var(--ink);color:#fff!important}
-    .nav-cta:hover{background:var(--blue)}
-    .menu{display:none;border:0;background:none;font-size:24px}
-    .hero{padding:92px 0 80px;background:var(--paper)}
-    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:#42505c;font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
-    .eyebrow:before{content:"";width:28px;height:2px;background:var(--blue)}
-    .hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:70px;align-items:end}
-    h1{font-size:clamp(52px,8vw,106px);line-height:.91;letter-spacing:-.075em;margin:20px 0 30px;max-width:900px}
-    h1 em{font-style:normal;color:var(--blue)}
-    .hero-copy{font-size:20px;line-height:1.5;color:#59646e;max-width:600px;margin:0}
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;border-radius:999px;font-size:14px;font-weight:800;border:1px solid var(--ink);transition:.2s ease}
-    .btn-dark{background:var(--ink);color:#fff}
-    .btn-dark:hover{background:var(--blue);border-color:var(--blue)}
-    .btn-light{background:transparent}
-    .btn-light:hover{background:#fff}
-    .hero-note{border-left:1px solid var(--line);padding-left:28px;color:#67717b;font-size:14px}
-    .hero-note strong{display:block;color:var(--ink);font-size:17px;margin-bottom:9px}
-    .ticker{background:var(--ink);color:#fff;border-block:1px solid var(--ink);overflow:hidden}
-    .ticker-inner{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:25px}
-    .ticker strong{font-size:13px;letter-spacing:.08em;text-transform:uppercase}
-    .ticker span{color:#aeb9c2;font-size:13px}
-    section{padding:105px 0}
-    .section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:46px}
-    .section-head h2{font-size:clamp(36px,5vw,64px);line-height:1;letter-spacing:-.055em;margin:12px 0 0;max-width:720px}
-    .section-head p{max-width:420px;color:var(--muted);margin:0;font-size:16px}
-    .services{background:#fff}
-    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
-    .service{min-height:250px;padding:31px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:.2s ease}
-    .service:hover{background:var(--ink);color:#fff;transform:translateY(-3px)}
-    .service-no{font-size:12px;color:var(--blue);font-weight:900;letter-spacing:.12em}
-    .service h3{font-size:24px;letter-spacing:-.035em;margin:52px 0 10px}
-    .service p{color:#707b84;margin:0;max-width:320px}
-    .service:hover p{color:#b7c0c7}
-    .print{background:var(--ink);color:#fff}
-    .print .eyebrow{color:#d8e1e6}
-    .print .section-head p{color:#aeb9c2}
-    .print-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-    .print-main{min-height:430px;border:1px solid #2d3944;border-radius:var(--radius);padding:42px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(145deg,#17222d,#101720)}
-    .print-main h3{font-size:clamp(38px,5vw,66px);line-height:.95;letter-spacing:-.06em;max-width:570px;margin:30px 0 0}
-    .print-main p{color:#aeb9c2;max-width:510px}
-    .print-list{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2d3944;border:1px solid #2d3944;border-radius:var(--radius);overflow:hidden}
-    .print-item{background:var(--ink-2);padding:27px;min-height:130px}
-    .print-item b{display:block;margin-bottom:6px;font-size:17px}
-    .print-item span{font-size:13px;color:#aeb9c2}
-    .work{background:var(--paper)}
-    .work-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:22px}
-    .work-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:35px;min-height:330px;display:flex;flex-direction:column;justify-content:space-between}
-    .work-card.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
-    .work-card h3{font-size:31px;letter-spacing:-.045em;max-width:500px;margin:0}
-    .work-card p{color:#68747d;max-width:500px}
-    .dark p{color:#aeb9c2}
-    .tag{font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:850;color:var(--blue)}
-    .about{background:#fff}
-    .about-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:80px}
-    .about-mark{font-size:clamp(70px,12vw,150px);font-weight:900;line-height:.8;letter-spacing:-.1em;color:var(--blue)}
-    .about-copy h2{font-size:clamp(38px,5vw,64px);line-height:.98;letter-spacing:-.06em;margin:0 0 25px}
-    .about-copy p{font-size:18px;color:#64707a;max-width:720px}
-    .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:50px;padding-top:35px;border-top:1px solid var(--line)}
-    .principles b{display:block;margin-bottom:7px}.principles span{font-size:14px;color:var(--muted)}
-    .faq{background:var(--paper)}
-    details{border-top:1px solid var(--line);padding:24px 0}
-    details:last-child{border-bottom:1px solid var(--line)}
-    summary{cursor:pointer;list-style:none;font-size:20px;font-weight:750;display:flex;justify-content:space-between;gap:30px}
-    summary::-webkit-details-marker{display:none}
-    summary:after{content:"+";font-weight:400;color:var(--blue)}
-    details[open] summary:after{content:"−"}
-    details p{color:var(--muted);max-width:760px;margin:15px 0 0}
-    .cta{padding:100px 0;background:var(--blue);color:var(--ink)}
-    .cta-grid{display:flex;justify-content:space-between;gap:50px;align-items:end}
-    .cta h2{font-size:clamp(48px,7vw,92px);line-height:.9;letter-spacing:-.07em;margin:15px 0 0;max-width:780px}
-    .cta p{max-width:390px;font-size:17px}
-    .cta .btn-dark{border-color:var(--ink)}
-    footer{background:var(--ink);color:#fff;padding:55px 0 28px}
-    .footer-top{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding-bottom:55px}
-    .footer-brand{font-size:25px;font-weight:850;letter-spacing:-.04em}
-    .footer-brand p{font-size:14px;font-weight:400;color:#9da8b1;max-width:390px;margin-top:13px}
-    .footer-links{display:flex;justify-content:flex-end;gap:45px}
-    .footer-links a{color:#b6c0c7;font-size:14px}.footer-links a:hover{color:#fff}
-    .footer-bottom{border-top:1px solid #2c3740;padding-top:22px;display:flex;justify-content:space-between;gap:20px;color:#77838d;font-size:12px}
-    @media(max-width:900px){
-      .nav-links{display:none}.menu{display:block}
-      .hero-grid,.print-layout,.work-grid,.about-grid{grid-template-columns:1fr}
-      .hero{padding-top:65px}.hero-note{border-left:0;border-top:1px solid var(--line);padding:22px 0 0}
-      .service-grid{grid-template-columns:1fr 1fr}.service{min-height:220px}
-      .section-head{display:block}.section-head p{margin-top:18px}
-      .principles{grid-template-columns:1fr}
-      .cta-grid{display:block}.cta p{margin:28px 0}
-      .footer-top{grid-template-columns:1fr}.footer-links{justify-content:flex-start;flex-wrap:wrap;gap:18px}
-    }
-    @media(max-width:560px){
-      .wrap{width:min(calc(100% - 28px),var(--max))}
-      .nav-inner{height:68px}.brand img{width:34px;height:34px}
-      h1{font-size:56px}.hero-copy{font-size:17px}
-      section{padding:75px 0}
-      .service-grid{grid-template-columns:1fr}.service{min-height:auto;padding:25px}.service h3{margin-top:38px}
-      .print-main{padding:27px;min-height:380px}.print-list{grid-template-columns:1fr}
-      .work-card{min-height:280px;padding:27px}
-      .ticker-inner{padding:14px 0;display:block}.ticker span{display:block;margin-top:5px}
-      .cta{padding:75px 0}
-      .footer-bottom{display:block}.footer-bottom span{display:block;margin-top:7px}
-    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}.wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
+    .nav{position:sticky;top:0;z-index:50;background:rgba(246,247,248,.9);backdrop-filter:blur(18px);border-bottom:1px solid rgba(223,228,232,.75)}.nav-inner{height:78px;display:flex;align-items:center;justify-content:space-between;gap:30px}.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.03em}.brand img{width:38px;height:38px;object-fit:contain;border-radius:50%}.brand span{font-size:16px}.nav-links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:650;color:#3f4851}.nav-links a:hover{color:var(--blue)}.nav-cta{padding:11px 17px;border-radius:999px;background:var(--ink);color:#fff!important}.nav-cta:hover{background:var(--blue)}.menu{display:none;border:0;background:none;font-size:24px}
+    .hero{padding:92px 0 80px;background:var(--paper)}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:#42505c;font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.eyebrow:before{content:"";width:28px;height:2px;background:var(--blue)}.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:70px;align-items:end}h1{font-size:clamp(52px,8vw,106px);line-height:.91;letter-spacing:-.075em;margin:20px 0 30px;max-width:900px}h1 em{font-style:normal;color:var(--blue)}.hero-copy{font-size:20px;line-height:1.5;color:#59646e;max-width:600px;margin:0}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;border-radius:999px;font-size:14px;font-weight:800;border:1px solid var(--ink);transition:.2s ease}.btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{background:var(--blue);border-color:var(--blue)}.btn-light{background:transparent}.btn-light:hover{background:#fff}.hero-note{border-left:1px solid var(--line);padding-left:28px;color:#67717b;font-size:14px}.hero-note strong{display:block;color:var(--ink);font-size:17px;margin-bottom:9px}
+    .ticker{background:var(--ink);color:#fff;border-block:1px solid var(--ink);overflow:hidden}.ticker-inner{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:25px}.ticker strong{font-size:13px;letter-spacing:.08em;text-transform:uppercase}.ticker span{color:#aeb9c2;font-size:13px}section{padding:105px 0}.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:46px}.section-head h2{font-size:clamp(36px,5vw,64px);line-height:1;letter-spacing:-.055em;margin:12px 0 0;max-width:720px}.section-head p{max-width:420px;color:var(--muted);margin:0;font-size:16px}
+    .services{background:#fff}.service-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.service{min-height:250px;padding:31px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:.2s ease}.service:hover{background:var(--ink);color:#fff;transform:translateY(-3px)}.service-no{font-size:12px;color:var(--blue);font-weight:900;letter-spacing:.12em}.service h3{font-size:24px;letter-spacing:-.035em;margin:52px 0 10px}.service p{color:#707b84;margin:0;max-width:320px}.service:hover p{color:#b7c0c7}
+    .print{background:var(--ink);color:#fff}.print .eyebrow{color:#d8e1e6}.print .section-head p{color:#aeb9c2}.print-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px}.print-main{min-height:430px;border:1px solid #2d3944;border-radius:var(--radius);padding:42px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(145deg,#17222d,#101720)}.print-main h3{font-size:clamp(38px,5vw,66px);line-height:.95;letter-spacing:-.06em;max-width:570px;margin:30px 0 0}.print-main p{color:#aeb9c2;max-width:510px}.print-list{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2d3944;border:1px solid #2d3944;border-radius:var(--radius);overflow:hidden}.print-item{background:var(--ink-2);padding:27px;min-height:130px}.print-item b{display:block;margin-bottom:6px;font-size:17px}.print-item span{font-size:13px;color:#aeb9c2}
+    .work{background:var(--paper)}.work-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:22px}.work-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:35px;min-height:330px;display:flex;flex-direction:column;justify-content:space-between}.work-card.dark{background:var(--ink);color:#fff;border-color:var(--ink)}.work-card h3{font-size:31px;letter-spacing:-.045em;max-width:500px;margin:0}.work-card p{color:#68747d;max-width:500px}.dark p{color:#aeb9c2}.tag{font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:850;color:var(--blue)}
+    .about{background:#fff}.about-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:80px}.about-mark{font-size:clamp(70px,12vw,150px);font-weight:900;line-height:.8;letter-spacing:-.1em;color:var(--blue)}.about-copy h2{font-size:clamp(38px,5vw,64px);line-height:.98;letter-spacing:-.06em;margin:0 0 25px}.about-copy p{font-size:18px;color:#64707a;max-width:720px}.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:50px;padding-top:35px;border-top:1px solid var(--line)}.principles b{display:block;margin-bottom:7px}.principles span{font-size:14px;color:var(--muted)}
+    .faq{background:var(--paper)}details{border-top:1px solid var(--line);padding:24px 0}details:last-child{border-bottom:1px solid var(--line)}summary{cursor:pointer;list-style:none;font-size:20px;font-weight:750;display:flex;justify-content:space-between;gap:30px}summary::-webkit-details-marker{display:none}summary:after{content:"+";font-weight:400;color:var(--blue)}details[open] summary:after{content:"−"}details p{color:var(--muted);max-width:760px;margin:15px 0 0}
+    .cta{padding:100px 0;background:var(--blue);color:var(--ink)}.cta-grid{display:flex;justify-content:space-between;gap:50px;align-items:end}.cta h2{font-size:clamp(48px,7vw,92px);line-height:.9;letter-spacing:-.07em;margin:15px 0 0;max-width:780px}.cta p{max-width:390px;font-size:17px}.cta .btn-dark{border-color:var(--ink)}
+    footer{background:var(--ink);color:#fff;padding:55px 0 28px}.footer-top{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding-bottom:55px}.footer-brand{font-size:25px;font-weight:850;letter-spacing:-.04em}.footer-brand p{font-size:14px;font-weight:400;color:#9da8b1;max-width:390px;margin-top:13px}.footer-links{display:flex;justify-content:flex-end;gap:45px}.footer-links a{color:#b6c0c7;font-size:14px}.footer-links a:hover{color:#fff}.footer-bottom{border-top:1px solid #2c3740;padding-top:22px;display:flex;justify-content:space-between;gap:20px;color:#77838d;font-size:12px}
+    @media(max-width:900px){.nav-links{display:none}.menu{display:block}.hero-grid,.print-layout,.work-grid,.about-grid{grid-template-columns:1fr}.hero{padding-top:65px}.hero-note{border-left:0;border-top:1px solid var(--line);padding:22px 0 0}.service-grid{grid-template-columns:1fr 1fr}.service{min-height:220px}.section-head{display:block}.section-head p{margin-top:18px}.principles{grid-template-columns:1fr}.cta-grid{display:block}.cta p{margin:28px 0}.footer-top{grid-template-columns:1fr}.footer-links{justify-content:flex-start;flex-wrap:wrap;gap:18px}}
+    @media(max-width:560px){.wrap{width:min(calc(100% - 28px),var(--max))}.nav-inner{height:68px}.brand img{width:34px;height:34px}h1{font-size:56px}.hero-copy{font-size:17px}section{padding:75px 0}.service-grid{grid-template-columns:1fr}.service{min-height:auto;padding:25px}.service h3{margin-top:38px}.print-main{padding:27px;min-height:380px}.print-list{grid-template-columns:1fr}.work-card{min-height:280px;padding:27px}.ticker-inner{padding:14px 0;display:block}.ticker span{display:block;margin-top:5px}.cta{padding:75px 0}.footer-bottom{display:block}.footer-bottom span{display:block;margin-top:7px}}
+    @media(max-width:900px){.nav-links.mobile-open{display:flex;position:absolute;left:14px;right:14px;top:74px;flex-direction:column;align-items:stretch;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow)}.nav-links.mobile-open a{padding:11px 8px}.nav-links.mobile-open .nav-cta{text-align:center}}
   </style>
 </head>
 <body>
   <header class="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="ELV Tech Lab home">
-        <img src="/elv-logo.png" alt="ELV Tech Lab logo">
-        <span>ELV Tech Lab</span>
-      </a>
+      <a class="brand" href="#top" aria-label="ELV Tech Lab home"><img src="/elv-logo.png" alt="ELV Tech Lab logo"><span>ELV Tech Lab</span></a>
       <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#services">Services</a>
-        <a href="#print">Print Tech</a>
-        <a href="#about">About</a>
-        <a href="#faq">FAQ</a>
-        <a class="nav-cta" href="https://calendly.com/elameenu/15-min-meeting" target="_blank" rel="noopener">Start a project</a>
+        <a href="#services">Services</a><a href="#print">Print Tech</a><a href="#about">About</a><a href="#faq">FAQ</a><a class="nav-cta" href="https://calendly.com/elameenu/15-min-meeting" target="_blank" rel="noopener">Start a project</a>
       </nav>
       <button class="menu" aria-label="Open menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')">☰</button>
     </div>
   </header>
-
   <main id="top">
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow">Technology · Creative · Print</div>
-          <h1>We build.<br>We print.<br><em>We brand.</em></h1>
-          <p class="hero-copy">ELV Tech Lab helps businesses turn ideas into digital products, memorable identities and physical experiences people can see, use and remember.</p>
-          <div class="actions">
-            <a class="btn btn-dark" href="https://calendly.com/elameenu/15-min-meeting" target="_blank" rel="noopener">Start a project</a>
-            <a class="btn btn-light" href="#services">Explore services</a>
-          </div>
-        </div>
-        <div class="hero-note">
-          <strong>One partner. More of your brand, connected.</strong>
-          From websites and software to identity systems, printed materials and custom merchandise, we bring the digital and physical sides of a business together.
-        </div>
-      </div>
-    </section>
-
-    <div class="ticker">
-      <div class="wrap ticker-inner">
-        <strong>Built for growing businesses</strong>
-        <span>Digital products · Brand identity · Graphic design · Print · Merchandise</span>
-      </div>
-    </div>
-
-    <section class="services" id="services">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">What we do</div>
-            <h2>Everything your brand needs to show up properly.</h2>
-          </div>
-          <p>We combine practical technology with thoughtful creative work, so your brand feels consistent from the screen to the real world.</p>
-        </div>
-        <div class="service-grid">
-          <article class="service"><div class="service-no">01</div><h3>Websites</h3><p>Fast, responsive and purposeful websites designed around your business and your customers.</p></article>
-          <article class="service"><div class="service-no">02</div><h3>Software & Apps</h3><p>Digital tools and applications that simplify operations, solve problems and create better experiences.</p></article>
-          <article class="service"><div class="service-no">03</div><h3>Brand Identity</h3><p>Visual systems that give your business a clear, recognizable and professional presence.</p></article>
-          <article class="service"><div class="service-no">04</div><h3>Graphic Design</h3><p>Campaign artwork, social graphics, business materials and visual assets made to communicate clearly.</p></article>
-          <article class="service"><div class="service-no">05</div><h3>Printing</h3><p>Quality printed materials for businesses, events, campaigns and everyday brand communication.</p></article>
-          <article class="service"><div class="service-no">06</div><h3>Custom Merchandise</h3><p>Branded shirts, notebooks, leather goods and other physical products made for your brand.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="print" id="print">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Print Tech</div>
-            <h2>Your brand shouldn't stop at the screen.</h2>
-          </div>
-          <p>We connect design, production and technology to turn your visual identity into physical products your customers can actually touch.</p>
-        </div>
-        <div class="print-layout">
-          <div class="print-main">
-            <div><div class="tag">From design to production</div><h3>Make your brand tangible.</h3></div>
-            <p>Whether you need a small run or a complete branded package, we help take the idea from artwork to finished product.</p>
-          </div>
-          <div class="print-list">
-            <div class="print-item"><b>Branded apparel</b><span>Shirts and wearable brand experiences.</span></div>
-            <div class="print-item"><b>Business print</b><span>Cards, stationery, flyers and essential materials.</span></div>
-            <div class="print-item"><b>Custom merchandise</b><span>Useful products people will keep and use.</span></div>
-            <div class="print-item"><b>Design to production</b><span>One workflow from concept through finished output.</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="work">
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="eyebrow">Our approach</div><h2>Good work should look good and work hard.</h2></div>
-          <p>We don't build for the sake of adding another website, logo or printed item. Every deliverable has a job to do.</p>
-        </div>
-        <div class="work-grid">
-          <article class="work-card dark">
-            <div class="tag">Digital</div>
-            <div><h3>Clear interfaces. Strong foundations. Better customer experiences.</h3><p>From a focused business website to a larger digital product, we balance visual quality with practical performance.</p></div>
-          </article>
-          <article class="work-card">
-            <div class="tag">Physical</div>
-            <div><h3>Design that survives outside the browser.</h3><p>Brand assets are designed with real production in mind, not just how they look on a screen.</p></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="about" id="about">
-      <div class="wrap about-grid">
-        <div class="about-mark">ELV<br>LAB</div>
-        <div class="about-copy">
-          <div class="eyebrow">About ELV</div>
-          <h2>A technology and creative studio for businesses that want to move forward.</h2>
-          <p>ELV Tech Lab brings digital technology, creative direction and Print Tech into one studio. The goal is simple: help businesses present themselves better, operate better and create things their customers remember.</p>
-          <div class="principles">
-            <div><b>Think clearly</b><span>Start with the business problem, not the tool.</span></div>
-            <div><b>Build intentionally</b><span>Make every design and technical choice count.</span></div>
-            <div><b>Deliver properly</b><span>Finish with work that is ready for the real world.</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="faq" id="faq">
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="eyebrow">Questions</div><h2>Before we start.</h2></div>
-          <p>Tell us what you are trying to build, improve or produce. We'll help you figure out the next step.</p>
-        </div>
-        <div>
-          <details><summary>What kind of projects do you take on?</summary><p>We work on websites, software and apps, branding, graphic design, printing and custom merchandise. Projects can be digital, physical or a combination of both.</p></details>
-          <details><summary>Can you handle both design and production?</summary><p>Yes. We can take a project from creative direction and design through to digital delivery or physical production, depending on what you need.</p></details>
-          <details><summary>How long does a project take?</summary><p>It depends on the scope. A focused design job can move quickly, while websites, software and larger production runs need more planning. We'll define the scope and timeline before work begins.</p></details>
-          <details><summary>How do I get started?</summary><p>Book a short conversation or send us your project details. We'll use that first conversation to understand the goal, requirements and the best way to approach it.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="wrap cta-grid">
-        <div><div class="eyebrow">Let's make it real</div><h2>Have something in mind?</h2></div>
-        <div><p>Tell us what you're building, branding or printing. Let's turn the idea into something useful and memorable.</p><a class="btn btn-dark" href="https://calendly.com/elameenu/15-min-meeting" target="_blank" rel="noopener">Book a conversation</a></div>
-      </div>
-    </section>
+    <section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">Technology · Creative · Print</div><h1>We build.<br>We print.<br><em>We brand.</em></h1><p class="hero-copy">ELV Tech Lab helps businesses turn ideas into digital products, memorable identities and physical experiences people can see, use and remember.</p><div class="actions"><a class="btn btn-dark" href="https://calendly.com/elameenu/15-min-meeting" target="_blank" rel="noopener">Start a project</a><a class="btn btn-light" href="#services">Explore services</a></div></div><div class="hero-note"><strong>One partner. More of your brand, connected.</strong>From websites and software to identity systems, printed materials and custom merchandise, we bring the digital and physical sides of a business together.</div></div></section>
+    <div class="ticker"><div class="wrap ticker-inner"><strong>Built for growing businesses</strong><span>Digital products · Brand identity · Corporate branding · Print · Merchandise</span></div></div>
+    <section class="services" id="services"><div class="wrap"><div class="section-head"><div><div class="eyebrow">What we do</div><h2>Everything your brand needs to show up properly.</h2></div><p>We combine practical technology with thoughtful creative work, so your brand feels consistent from the screen to the real world.</p></div><div class="service-grid">
+      <article class="service"><div class="service-no">01</div><h3>Websites</h3><p>Fast, responsive and purposeful websites designed around your business and your customers.</p></article>
+      <article class="service"><div class="service-no">02</div><h3>Software & Apps</h3><p>Digital tools and applications that simplify operations, solve problems and create better experiences.</p></article>
+      <article class="service"><div class="service-no">03</div><h3>Brand Identity</h3><p>Visual systems that give your business a clear, recognizable and professional presence.</p></article>
+      <article class="service"><div class="service-no">04</div><h3>Corporate Branding</h3><p>Professional brand communication across corporate materials, campaigns, digital channels and business touchpoints.</p></article>
+      <article class="service"><div class="service-no">05</div><h3>Printing</h3><p>Quality printed materials for businesses, events, campaigns and everyday brand communication.</p></article>
+      <article class="service"><div class="service-no">06</div><h3>Custom Merchandise</h3><p>Branded shirts, notebooks, leather goods and other physical products made for your brand.</p></article>
+    </div></div></section>
+    <section class="print" id="print"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Print Tech</div><h2>Your brand shouldn't stop at the screen.</h2></div><p>We connect design, production and technology to turn your visual identity into physical products your customers can actually touch.</p></div><div class="print-layout"><div class="print-main"><div><div class="tag">From design to production</div><h3>Make your brand tangible.</h3></div><p>Whether you need a small run or a complete branded package, we help take the idea from artwork to finished product.</p></div><div class="print-list"><div class="print-item"><b>Branded apparel</b><span>Shirts and wearable brand experiences.</span></div><div class="print-item"><b>Business print</b><span>Cards, stationery, flyers and essential materials.</span></div><div class="print-item"><b>Custom merchandise</b><span>Useful products people will keep and use.</span></div><div class="print-item"><b>Design to production</b><span>One workflow from concept through finished output.</span></div></div></div></div></section>
+    <section class="work"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Our approach</div><h2>Good work should look good and work hard.</h2></div><p>We don't build for the sake of adding another website, logo or printed item. Every deliverable has a job to do.</p></div><div class="work-grid"><article class="work-card dark"><div class="tag">Digital</div><div><h3>Clear interfaces. Strong foundations. Better customer experiences.</h3><p>From a focused business website to a larger digital product, we balance visual quality with practical performance.</p></div></article><article class="work-card"><div class="tag">Physical</div><div><h3>Design that survives outside the browser.</h3><p>Brand assets are designed with real production in mind, not just how they look on a screen.</p></div></article></div></div></section>
+    <section class="about" id="about"><div class="wrap about-grid"><div class="about-mark">ELV<br>LAB</div><div class="about-copy"><div class="eyebrow">About ELV</div><h2>A technology and creative studio for businesses that want to move forward.</h2><p>ELV Tech Lab brings digital technology, creative direction and Print Tech into one studio. The goal is simple: help businesses present themselves better, operate better and create things their customers remember.</p><div class="principles"><div><b>Think clearly</b><span>Start with the business problem, not the tool.</span></div><div><b>Build intentionally</b><span>Make every design and technical choice count.</span></div><div><b>Deliver properly</b><span>Finish with work that is ready for the real world.</span></div></div></div></div></section>
+    <section class="faq" id="faq"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Questions</div><h2>Before we start.</h2></div><p>Tell us what you are trying to build, improve or produce. We'll help you figure out the next step.</p></div><div><details><summary>What kind of projects do you take on?</summary><p>We work on websites, software and apps, branding, graphic design, printing and custom merchandise. Projects can be digital, physical or a combination of both.</p></details><details><summary>Can you handle both design and production?</summary><p>Yes. We can take a project from creative direction and design through to digital delivery or physical production, depending on what you need.</p></details><details><summary>How long does a project take?</summary><p>It depends on the scope. A focused design job can move quickly, while websites, software and larger production runs need more planning. We'll define the scope and timeline before work begins.</p></details><details><summary>How do I get started?</summary><p>Book a short conversation or send us your project details. We'll use that first conversation to understand the goal, requirements and the best way to approach it.</p></details></div></div></section>
+    <section class="cta"><div class="wrap cta-grid"><div><div class="eyebrow">Let's make it real</div><h2>Have something in mind?</h2></div><div><p>Tell us what you're building, branding or printing. Let's turn the idea into something useful and memorable.</p><a class="btn btn-dark" href="https://calendly.com/elameenu/15-min-meeting" target="_blank" rel="noopener">Book a conversation</a></div></div></section>
   </main>
-
-  <footer>
-    <div class="wrap">
-      <div class="footer-top">
-        <div class="footer-brand">ELV Tech Lab<p>We build. We print. We brand.<br>Digital technology and creative production for growing businesses.</p></div>
-        <div class="footer-links">
-          <a href="https://instagram.com/elv.lab" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://tiktok.com/@elv.tech.lab" target="_blank" rel="noopener">TikTok</a>
-          <a href="mailto:i.elameenu@gmail.com">Email</a>
-          <a href="https://calendly.com/elameenu/15-min-meeting" target="_blank" rel="noopener">Book a call</a>
-        </div>
-      </div>
-      <div class="footer-bottom"><span>© 2026 ELV Tech Lab. All rights reserved.</span><span>elvlab.info</span></div>
-    </div>
-  </footer>
-
-  <style>
-    @media(max-width:900px){
-      .nav-links.mobile-open{display:flex;position:absolute;left:14px;right:14px;top:74px;flex-direction:column;align-items:stretch;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow)}
-      .nav-links.mobile-open a{padding:11px 8px}
-      .nav-links.mobile-open .nav-cta{text-align:center}
-    }
-  </style>
+  <footer><div class="wrap"><div class="footer-top"><div class="footer-brand">ELV Tech Lab<p>We build. We print. We brand.<br>Digital technology and creative production for growing businesses.</p></div><div class="footer-links"><a href="https://instagram.com/elv.lab" target="_blank" rel="noopener">Instagram</a><a href="https://tiktok.com/@elv.tech.lab" target="_blank" rel="noopener">TikTok</a><a href="mailto:i.elameenu@gmail.com">Email</a><a href="https://calendly.com/elameenu/15-min-meeting" target="_blank" rel="noopener">Book a call</a></div></div><div class="footer-bottom"><span>© 2026 ELV Tech Lab. All rights reserved.</span><span>elvlab.info</span></div></div></footer>
 </body>
 </html>
